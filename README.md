@@ -34,10 +34,9 @@ FCM(Firebase Cloud Messaging) Swift
 
 ## 구현 기능
 
-1. Firebase Authentication을 이용해 '이메일로 회원가입/로그인', 'Google로 회원가입/로그인' 
-구현 2. Firebase Realtime Database에서 로그인 한 사용자에 맞는 정보를 ViewController들에 표 
-시. 3. Spring 서버에서 이벤트가 발생하면 FCM을 이용해 iOS App이 Push Notification을 받을 수 
-있도록 구현. 
+1. Firebase Authentication을 이용해 '이메일로 회원가입/로그인', 'Google로 회원가입/로그인' 구현
+2. Firebase Realtime Database에서 로그인 한 사용자에 맞는 정보를 ViewController들에 표시.
+3. Spring 서버에서 이벤트가 발생하면 FCM을 이용해 iOS App이 Push Notification을 받을 수 있도록 구현.
 
 ## Demo
 ![그림5](https://user-images.githubusercontent.com/29617557/152779418-9f7966fe-5d8a-4463-8b0b-53764dbf7224.mp4)
