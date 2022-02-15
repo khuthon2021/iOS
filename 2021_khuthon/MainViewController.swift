@@ -37,9 +37,10 @@ class MainViewController: UIViewController {
         ref.child("count").child(UID).getData { error, snapshot in
             guard error == nil else {
                 print(error!.localizedDescription)
+                self.todayCountLabel.text = "데이터를 찾을 수 없습니다."
                 return;
             }
-//            print("-->", snapshot.value!)
+
             guard let val = snapshot.value as? [String: [String: Any]] else {
                 self.todayCountLabel.text = "데이터가 없습니다."
                 self.lineChartView.noDataText = "데이터가 없습니다."
@@ -47,7 +48,7 @@ class MainViewController: UIViewController {
             }
             for (date, counter) in val {
                 let count = counter["count"] as! Int
-//                print("date : \(date), counter : \(count)")
+
                 self.counterDic.updateValue(count, forKey: date)
             }
             let newdic = self.counterDic.sorted(by: <)

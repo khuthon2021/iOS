@@ -12,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
             print("Error ocurred Google SignIn \(error.localizedDescription)")
+            return
         }
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
@@ -47,13 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         }
         application.registerForRemoteNotifications()
         
-        //////
-        guard var rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController else {
+        guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController else {
             return false
         }
         
         if let UID = Auth.auth().currentUser?.uid {
-            print("UID가 있으므로 --> \(UID), 바로 MainVC 진입")
+            // UID가 있으므로  바로 MainVC 진입
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             if let mainViewController = storyboard.instantiateViewController(identifier: "MainViewController") as? MainViewController {
                 rootViewController.present(mainViewController, animated: true, completion: nil)
